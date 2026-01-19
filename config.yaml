@@ -1,0 +1,65 @@
+# Google Unified Dashboard Configuration
+
+# Google Sheets Configuration
+google_sheets:
+  spreadsheet_name: "Google Unified Dashboard - Usage Data"
+  worksheet_name: "Aggregated Usage"
+  # Path to your Google service account credentials JSON file
+  credentials_path: "service-account.json"
+
+# Data Collection Sources
+sources:
+  gemini:
+    enabled: true
+    api_key_env: "GEMINI_API_KEY"
+    project_id_env: "GEMINI_PROJECT_ID"
+    # Gemini API endpoint for usage data
+    endpoint: "https://generativelanguage.googleapis.com/v1beta/models"
+    
+  opal:
+    enabled: true
+    api_key_env: "OPAL_API_KEY"
+    # Opal API configuration
+    endpoint: "https://api.opal.dev/v1"
+    
+  wisk:
+    enabled: true
+    api_key_env: "WISK_API_KEY"
+    # Wisk API configuration
+    endpoint: "https://api.wisk.com/v1"
+    
+  polemi:
+    enabled: true
+    api_key_env: "POLEMI_API_KEY"
+    # Polemi API configuration
+    endpoint: "https://api.polemi.com/v1"
+
+# Aggregation Settings
+aggregation:
+  # How often to collect data (in minutes)
+  collection_interval: 60
+  # Date range for historical data collection (days)
+  historical_days: 30
+  # Timezone for timestamps
+  timezone: "UTC"
+
+# Cost Configuration (USD per unit)
+cost_mapping:
+  gemini:
+    input_token: 0.000001
+    output_token: 0.000002
+  opal:
+    api_call: 0.01
+    user_seat: 50.00
+  wisk:
+    api_call: 0.005
+    storage_gb: 0.10
+  polemi:
+    api_call: 0.008
+    compute_hour: 0.50
+
+# Looker Studio Integration
+looker_studio:
+  # Instructions for connecting to Google Sheets data source
+  enabled: true
+  # The spreadsheet will be accessible via Google Sheets connector in Looker Studio
