@@ -2,6 +2,15 @@
 
 A comprehensive solution for aggregating usage data from multiple Google and AI tools (Gemini, Opal, Wisk, Polemi) into Google Sheets, then visualizing it in Looker Studio for unified monitoring of costs, API usage, and resource consumption.
 
+## 📚 Documentation
+
+- **[Quick Start Guide](QUICKSTART.md)** - Get started in 15 minutes
+- **[API Configuration](docs/API_CONFIGURATION.md)** - Configure service API keys
+- **[Looker Studio Setup](docs/LOOKER_STUDIO_SETUP.md)** - Create visualizations
+- **[Deployment Guide](docs/DEPLOYMENT.md)** - Production deployment options
+- **[Contributing](CONTRIBUTING.md)** - How to contribute
+- **[Changelog](CHANGELOG.md)** - Version history
+
 ## Overview
 
 This dashboard provides:

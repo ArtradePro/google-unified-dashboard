@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/index.js",
     "collect": "node src/index.js",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "echo \"No tests specified\" && exit 0",
+    "test-apis": "node examples/test-apis.js",
+    "mock-collect": "node examples/mock-collector.js"
   },
   "keywords": [
     "google",
