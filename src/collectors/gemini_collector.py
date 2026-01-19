@@ -4,8 +4,7 @@ Gemini API usage data collector
 
 import os
 from typing import Dict, List
-from datetime import datetime, timedelta
-import requests
+from datetime import datetime, timedelta, timezone
 from src.collectors.base_collector import BaseCollector
 from src.utils.logger import setup_logger
 
@@ -65,8 +64,8 @@ class GeminiCollector(BaseCollector):
             'total_input_tokens': 150000,
             'total_output_tokens': 50000,
             'api_calls': 250,
-            'period_start': (datetime.utcnow() - timedelta(days=1)).isoformat(),
-            'period_end': datetime.utcnow().isoformat()
+            'period_start': (datetime.now(timezone.utc) - timedelta(days=1)).isoformat(),
+            'period_end': datetime.now(timezone.utc).isoformat()
         }
         
     def _process_usage_data(self, raw_data: Dict) -> List[Dict]:

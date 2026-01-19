@@ -3,8 +3,7 @@ Opal usage data collector
 """
 
 from typing import Dict, List
-from datetime import datetime, timedelta
-import requests
+from datetime import datetime, timedelta, timezone
 from src.collectors.base_collector import BaseCollector
 from src.utils.logger import setup_logger
 
@@ -56,8 +55,8 @@ class OpalCollector(BaseCollector):
             'active_users': 45,
             'user_seats': 50,
             'resources_managed': 320,
-            'period_start': (datetime.utcnow() - timedelta(days=1)).isoformat(),
-            'period_end': datetime.utcnow().isoformat()
+            'period_start': (datetime.now(timezone.utc) - timedelta(days=1)).isoformat(),
+            'period_end': datetime.now(timezone.utc).isoformat()
         }
         
     def _process_usage_data(self, raw_data: Dict) -> List[Dict]:

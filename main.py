@@ -5,8 +5,6 @@ Aggregates usage data from multiple Google and AI tools into Google Sheets
 
 import os
 import sys
-import logging
-from datetime import datetime, timedelta
 from typing import Dict, List
 import yaml
 from dotenv import load_dotenv
