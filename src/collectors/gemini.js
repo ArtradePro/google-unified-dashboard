@@ -26,6 +26,8 @@ class GeminiCollector {
 
       // Note: This is a template implementation
       // Actual API endpoints will depend on Gemini's specific API structure
+      // The response structure below is an example and should be adapted
+      // to match the actual Gemini API response format
       const response = await axios.get(
         `https://generativelanguage.googleapis.com/v1/models`,
         {
@@ -38,6 +40,7 @@ class GeminiCollector {
         }
       );
 
+      // Adapt these fields based on actual API response
       const usageData = {
         service: 'Gemini',
         timestamp: new Date().toISOString(),

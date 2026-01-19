@@ -82,15 +82,15 @@ class GoogleSheetsService {
       const rows = dataArray
         .filter(data => data !== null)
         .map(data => {
-          const additionalMetrics = JSON.stringify({
-            tokenUsage: data.tokenUsage,
-            modelsUsed: data.modelsUsed,
-            resources: data.resources,
-            activeUsers: data.activeUsers,
-            bandwidth: data.bandwidth,
-            storage: data.storage,
-            computeHours: data.computeHours,
-            dataProcessed: data.dataProcessed
+          // Filter out null/undefined values before stringifying
+          const additionalMetrics = {};
+          const fields = ['tokenUsage', 'modelsUsed', 'resources', 'activeUsers', 
+                         'bandwidth', 'storage', 'computeHours', 'dataProcessed'];
+          
+          fields.forEach(field => {
+            if (data[field] !== undefined && data[field] !== null) {
+              additionalMetrics[field] = data[field];
+            }
           });
 
           return [
@@ -99,7 +99,7 @@ class GoogleSheetsService {
             data.apiCalls || 0,
             data.costs || 0,
             data.status,
-            additionalMetrics,
+            Object.keys(additionalMetrics).length > 0 ? JSON.stringify(additionalMetrics) : '',
             data.error || ''
           ];
         });

@@ -11,7 +11,11 @@ async function main() {
   
   // Create logs directory if it doesn't exist
   if (!fs.existsSync('logs')) {
-    fs.mkdirSync('logs');
+    try {
+      fs.mkdirSync('logs', { recursive: true });
+    } catch (error) {
+      logger.error(`Failed to create logs directory: ${error.message}`);
+    }
   }
 
   try {
