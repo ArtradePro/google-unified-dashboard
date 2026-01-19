@@ -4,7 +4,6 @@ Logging configuration for the application
 
 import logging
 import sys
-from datetime import datetime
 
 
 def setup_logger(name: str, level: int = logging.INFO) -> logging.Logger:
